@@ -7,7 +7,7 @@ profile-test-project is the django test project
 Use requirements.txt to install libraries
 
 ```bash
--r requirements.txt
+pip install -r requirements.txt
 ```
 Migrate migrations
 
