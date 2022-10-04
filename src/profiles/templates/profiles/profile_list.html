@@ -1,0 +1,20 @@
+{% extends 'profiles/base.html' %}
+{% load i18n %}
+{% load link_to_change %}
+
+{% block title %}
+<h1 class="mb-3">{% translate 'Profiles'%}</h1>
+{% endblock %}
+
+{% block content %}
+{% for profile in profiles %}
+<div class="card" style="width: 18rem; margin: 50px auto; float: none; margin-bottom: 10px;">
+  <div class="card-body">
+    <h5 class="card-title">{{ profile.get_full_name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ profile.birthdate }}</h6>
+    <p class="card-text">{{ object.biography|truncatechars:40 }}</p>
+    <a href="{% url 'profiles:profile_detail' profile.uuid  %}" class="card-link">{% translate 'Go to profile' %}</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

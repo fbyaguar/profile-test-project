@@ -1,0 +1,115 @@
+{% extends 'profiles/base.html' %}
+{% load i18n %}
+
+{% block title %}
+<h1 class="mb-3">{% translate 'Profile information'%}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container p-5 my-5 border">
+    <div class="card">
+        <div class="card-header">{% translate 'First name' %}</div>
+        <div class="card-body">{{ object.first_name }}</div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">{% translate 'Last name' %}</div>
+        <div class="card-body">{{ object.last_name }}</div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">{% translate 'Date of birth' %}</div>
+        <div class="card-body">{{ object.birthdate }}</div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">{% translate 'Biography' %}</div>
+        <div class="card-body">{{ object.biography }}</div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">{% translate 'Email' %}</div>
+        <div class="card-body">{{ object.contacts }}</div>
+    </div>
+
+    <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#profile-modal">
+        {% translate 'Edit profile'%}
+    </button>
+</div>
+
+<div class="modal" id="profile-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">{% translate 'Edit your profile information' %}</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form action="{% url 'profiles:profile_detail' object.uuid  %}" method="post">
+                <div class="modal-body">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">{% translate 'First name' %}</label>
+                        <input class="form-control" name="{{ form.first_name.name }}"
+                               id="{{ form.first_name.id_for_label }}" value="{{ form.first_name.value }}">
+                        <div class="text-danger">
+                          {{ form.first_name.errors }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">{% translate 'Last name' %}</label>
+                        <input class="form-control" name="{{ form.last_name.name }}"
+                               id="{{ form.last_name.id_for_label }}" value="{{ form.last_name.value }}">
+                        <div class="text-danger">
+                          {{ form.last_name.errors }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">{% translate 'Date of birth'%}: {{ form.birthdate.value }}</label>
+                        <input type="date" class="form-control" name="{{ form.birthdate.name }}"
+                               id="{{ form.birthdate.id_for_label }}" value="{{ form.birthdate.value }}">
+                        <div class="text-danger">
+                          {{ form.birthdate.errors }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.biography.id_for_label }}" class="form-label">{% translate 'Biography'%}</label>
+                        <textarea class="form-control" name="{{ form.biography.name }}"
+                                  id="{{ form.biography.id_for_label }}" rows="3">{{ form.biography.value }}</textarea>
+                        <div class="text-danger">
+                          {{ form.biography.errors }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">{% translate 'Email'%}</label>
+                        <input class="form-control" name="{{ form.contacts.name }}"
+                               id="{{ form.contacts.id_for_label }}" value="{{ form.contacts.value }}">
+                        <div class="text-danger">
+                          {{ form.contacts.errors }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success col-3">{% translate 'Save'%}</button>
+                </div>
+
+                {% if form.errors %}
+                  <script>
+                    $(function() {
+                     $('#profile-modal').modal('show');
+                    });
+                  </script>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

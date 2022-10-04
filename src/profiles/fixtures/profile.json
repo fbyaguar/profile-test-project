@@ -1,0 +1,30 @@
+[
+{
+    "model": "profiles.profile",
+    "pk": 1,
+    "fields": {
+        "created": "2022-09-24T09:12:14.801Z",
+        "modified": "2022-09-24T09:12:14.801Z",
+        "uuid": "6e8deef7-cfad-4756-9722-3417b5486c29",
+        "first_name": "Artem",
+        "last_name": "Sindeev",
+        "birthdate": "1991-03-17",
+        "biography": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "contacts": "artem@ukr.net"
+    }
+},
+{
+    "model": "profiles.profile",
+    "pk": 2,
+    "fields": {
+        "created": "2022-09-24T09:13:42.315Z",
+        "modified": "2022-09-24T09:13:42.315Z",
+        "uuid": "4a42d0d3-b7a2-4da7-8562-6b16b661f7f3",
+        "first_name": "Mark",
+        "last_name": "Cusher",
+        "birthdate": "1995-05-20",
+        "biography": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "contacts": "cusher@ukr.net"
+    }
+}
+]
